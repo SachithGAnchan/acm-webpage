@@ -9,7 +9,287 @@ import HexagonParticles from '../../HexagonParticles';
 import NavigationCompass from '../NavigationCompass';
 // as of now it's temporarily here, later we'll make a separate JSON file
 
-const membersData = [
+const currentMembersData = [
+  {
+    name: "Pratheeksha",
+    role: "Chair person",
+    profilePic: "/images/1.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Executive"
+  },
+    {
+    name: "Pratheeksha",
+    role: "Vice Chair person",
+    profilePic: "/images/2.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Executive"
+  },
+      {
+    name: "Aneesh",
+    role: "Treasurer",
+    profilePic: "/images/3.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Executive"
+  },
+        {
+    name: "Akshatha",
+    role: "Vice Secretary",
+    profilePic: "/images/4.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Executive"
+  },
+          {
+    name: "Vaishali",
+    role: "Vice Secretary",
+    profilePic: "/images/5.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Executive"
+  },
+          {
+    name: "Sachith G Anchan",
+    role: "Technical Member",
+    profilePic: "/images/6.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Tech"
+  },
+            {
+    name: "Thushar",
+    role: "Technical Member",
+    profilePic: "/images/7.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Tech"
+  },
+              {
+    name: "Hasnain Khan",
+    role: "Event Team",
+    profilePic: "/images/8.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Event"
+  },
+                {
+    name: "Prakyath Suvarna",
+    role: "Event Team",
+    profilePic: "/images/9.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Event"
+  },
+                {
+    name: "Trishal Hegde",
+    role: "Event Team",
+    profilePic: "/images/10.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Event"
+  },
+                  {
+    name: "Aishwarya",
+    role: "Social Media Team",
+    profilePic: "/images/11.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Media"
+  },
+                    {
+    name: "Anagha",
+    role: "Social Media Team",
+    profilePic: "/images/12.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Media"
+  },
+                    {
+    name: "Shashanka Shanbhag",
+    role: "Social Media Team",
+    profilePic: "/images/13.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Media"
+  },
+                    {
+    name: "Chinthan",
+    role: "Photography",
+    profilePic: "/images/14.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Media"
+  },
+  {
+        name: "Udhbhav S Nayak",
+    role: "Photography",
+    profilePic: "/images/15.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Media"
+  },
+                    {
+    name: "Dharshan P Kumar",
+    role: "Photography",
+    profilePic: "/images/16.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Media"
+  },
+                      {
+    name: "Akshay Mayya",
+    role: "Graphic Team",
+    profilePic: "/images/17.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Graphic"
+  },
+                        {
+    name: "Anmol S Poojary",
+    role: "Graphic Team",
+    profilePic: "/images/18.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Graphic"
+  },
+  {
+      name: "Anchal Rao N",
+    role: "Publicity Team",
+    profilePic: "/images/19.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Publicity"
+  },
+    {
+      name: "Stuthi Achar",
+    role: "Publicity Team",
+    profilePic: "/images/20.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Publicity"
+  },
+      {
+      name: "Dhruvi Shetty",
+    role: "Publicity Team",
+    profilePic: "/images/21.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Publicity"
+  },
+      {
+      name: "Unnathi U Bhat",
+    role: "Documentation Team",
+    profilePic: "/images/22.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Documentation"
+  },
+        {
+      name: "Swasthik M Prabhu",
+    role: "Documentation Team",
+    profilePic: "/images/23.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Documentation"
+  },
+          {
+      name: "Rishith Shetty",
+    role: "Second Year Representative",
+    profilePic: "/images/24.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Representatives"
+  },
+            {
+      name: "Shaldon Barnes",
+    role: "Third Year Representative",
+    profilePic: "/images/25.jpg",
+    socialLinks: {
+      instagram: "https://instagram.com/username",
+      linkedin: "https://linkedin.com/in/username",
+      github: "https://github.com/username"
+    },
+    category: "Representatives"
+  }
+
+];
+
+
+const previousMembersData = [
   {
     name: "Neil",
     role: "Chairperson",
@@ -355,23 +635,37 @@ const membersData = [
 
 
 ];
+
+
+
+
 const Members = () => {
   // Initialize Locomotive Scroll
   //<NavigationCompass />
-  useEffect(() => {
-    const scroll = new LocomotiveScroll({
-      el: document.querySelector('#scroll-container'),
-      smooth: true,
-    });
+useEffect(() => {
+  const scroll = new LocomotiveScroll({
+    el: document.querySelector('#scroll-container'),
+    smooth: true,
+  });
 
-    return () => {
-      scroll.destroy();
-    };
-  }, []);
+  const updateScroll = () => scroll.update();
+
+  window.addEventListener("load", updateScroll);
+
+  setTimeout(updateScroll, 500);
+
+  return () => {
+    window.removeEventListener("load", updateScroll);
+    scroll.destroy();
+  };
+}, []);
+
+
   //
 
-  const renderMemberGroup = (category, title) => {
-    const members = membersData.filter(member => member.category === category);
+const renderMemberGroup = (data, category, title) => {                //for multiple members
+  const members = data.filter(member => member.category === category);
+
 
     if (members.length === 0) return null;
 
@@ -421,9 +715,27 @@ const Members = () => {
       
       <div id="scroll-container" className={styles.membersContainer}>
         <div className={styles.info}>
-          {renderMemberGroup('officeBearer', 'Executive')}
-          {renderMemberGroup('creative', 'Creative')}
-          {renderMemberGroup('operation', 'Operations')}
+          {/* 🔥 NEW MEMBERS (TOP) */}
+          <h1 className={styles.yearHeading}>2025–26 Team</h1>
+              {renderMemberGroup(currentMembersData, 'Executive', 'Executive')}
+              {renderMemberGroup(currentMembersData, 'Tech', 'Technical Team')}
+              {renderMemberGroup(currentMembersData, 'Event', 'Event Team')}
+              {renderMemberGroup(currentMembersData, 'Media', 'Media Team')}
+              {renderMemberGroup(currentMembersData, 'Graphic', 'Graphic Team')}
+              {renderMemberGroup(currentMembersData, 'Publicity', 'Publicity Team')}
+              {renderMemberGroup(currentMembersData, 'Documentation', 'Documentation Team')}
+              {renderMemberGroup(currentMembersData, 'Representatives', 'Representatives')}
+
+
+          {/* 🔽 OLD MEMBERS (BELOW) */}
+          <h1 id="previous-team" className={styles.yearHeading}>
+            2024–25 Team
+          </h1>
+
+          {renderMemberGroup(previousMembersData, 'officeBearer', 'Executive')}
+          {renderMemberGroup(previousMembersData, 'creative', 'Creative')}
+          {renderMemberGroup(previousMembersData, 'operation', 'Operations')}
+
         </div>
       <Footer />
       </div>

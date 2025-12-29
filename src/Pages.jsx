@@ -19,6 +19,29 @@ import VantaGlobe from './VantaGlobe';
 import VantaRings from './VantaRings';
 //all profiles 
 
+const currentProfiles = [
+  {
+    name: "Pratheeksha",
+    role: "ChairPerson",
+    profilePic: "/images/1.jpg"
+  },
+  {
+    name: "Pratheeksha",
+    role: "Vice ChairPerson",
+    profilePic: "/images/2.jpg"
+  },
+  {
+    name: "Aneesh",
+    role: "Treasurer",
+    profilePic: "/images/3.jpg"
+  },
+  {
+    name: "Akshatha G S",
+    role: "Vice Secretary",
+    profilePic: "/images/4.jpg"
+  }
+];
+
 const profiles = [
   {
     name: "Neil Mammen Prakash",
@@ -78,7 +101,7 @@ export default function Pages() {
     speed: 0.4,
   });
   const { ref: scrambleRef5, replay: scrambleReplay5 } = useScramble({
-    text: "Our Team ",
+    text: "Our Team (2024–25)",
     speed: 0.4,
   });
 
@@ -170,6 +193,48 @@ export default function Pages() {
 
           </div>
 
+                {/* CURRENT YEAR CORE MEMBERS */}
+        <div
+          id="sectionCurrentTeam"
+          className={styles.pageSection + ' ' + styles.section4}
+          data-scroll-section
+        >
+
+          <h1
+            style={{
+              fontSize: window.innerWidth <= 768 ? '60px' : '100px',
+              letterSpacing: '10px',
+              marginTop: window.innerWidth <= 768 ? '10px' : '15px',
+              color: '#FFFFF0',
+              textTransform: 'uppercase',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              position: 'relative',
+              top: '3vw'
+            }}
+          >
+            Our Team (2025–26)
+          </h1>
+
+          <div className={styless.cardsContainer}>
+            {currentProfiles.map((profile, index) => (
+              <ProfileCard
+                key={index}
+                name={profile.name}
+                role={profile.role}
+                profilePic={profile.profilePic}
+              />
+            ))}
+
+            <button
+              className={styles.more}
+              onClick={() => navigate('/members')}
+              style={{ cursor: 'pointer' }}
+            >
+              More
+            </button>
+          </div>
+        </div>
 
 
           {/* second page about section  */}
@@ -214,7 +279,12 @@ export default function Pages() {
 
           {/* core members */}
 
-          <div id='section4' className={styles.pageSection + ' ' + styles.section4} data-scroll-section>
+          <div
+            id="sectionPreviousTeam"
+            className={styles.pageSection + ' ' + styles.section4}
+            data-scroll-section
+          >
+
             <h1 ref={scrambleRef5} onMouseEnter={handleMouseEnter5}
               style={{
                 fontSize: window.innerWidth <= 768 ? '60px' : '100px',
@@ -227,7 +297,7 @@ export default function Pages() {
                 position: 'relative',
                 top: '3vw'
               }}
-              className="animate-text" data-scroll data-scroll-speed="2">Our Team</h1>
+              className="animate-text" data-scroll data-scroll-speed="2">Our Team (2024–25)</h1>
 
 
 
@@ -251,12 +321,13 @@ export default function Pages() {
                     profilePic={profile.profilePic}
                   />
                 ))}
-                <button className={styles.more}
-                  onClick={() => navigate('/members')}
-                  style={{
-                    textAlign: 'center',
-                    cursor:'pointer'
-                  }}>More</button>
+                <button
+                  className={styles.more}
+                  onClick={() => navigate('/members#previous-team')}
+                >
+                  More
+                </button>
+
               </div>
             </div>
 

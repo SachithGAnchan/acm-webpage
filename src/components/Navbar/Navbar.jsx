@@ -69,7 +69,7 @@ const Navbar = ({onNavigate}) => {
             <li className={styles.menuItem}  onClick={() => { onNavigate('#section1'); toggleMenu(); }} >Home</li>
             <li className={styles.menuItem} onClick={() => { onNavigate('#section2'); toggleMenu(); }}>About</li>
             <li className={styles.menuItem} onClick={() => { onNavigate('#section3'); toggleMenu(); }}>Events </li>
-            <li className={styles.menuItem} onClick={() => { onNavigate('#section4'); toggleMenu(); }}>Team</li>
+            <li className={styles.menuItem}onClick={() => { onNavigate('#sectionCurrentTeam'); toggleMenu(); }}>Team</li>
             <li className={styles.menuItem}  onClick={() => { onNavigate('#section5'); toggleMenu(); }} >Contact Us</li>
           
           </ul>

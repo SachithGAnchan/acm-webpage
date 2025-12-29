@@ -78,10 +78,10 @@ const Events = () => {
 
         <div className="event-card__header">
           <div className="event-card__date">Thursday, 16,23,30th January 2025</div>
-          <div className="event-card__title">Career Connect -The Thursday Chronicals</div>
+          <div className="event-card__title">Career Connect </div>
         </div>
 
-        <img src={eventImage} alt="Event" className="event-card__image" />
+        <img src={eventImage3} alt="Event" className="event-card__image" />
 
         <div className="event-card__details">
           <div className="event-card__description">Career Connect -The Thursday Chronicals</div>
@@ -167,21 +167,29 @@ const StyledWrapper = styled.div`
     text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
   }
 
-  .event-card__title {
-    font-size: 1.6rem;
-    font-weight: 900;
-    color: #fff;
-    text-transform: uppercase;
-    margin-top: 0.5rem;
-    text-shadow: 2px 2px 0 #000;
-  }
+.event-card__title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  text-shadow: 2px 2px 0 #000;
 
-  .event-card__image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-bottom: 3px solid #000;
-  }
+  /* 🔑 FIX */
+  min-height: 3.8rem;      /* space for 2 lines */
+  line-height: 1.9rem;
+}
+
+
+.event-card__image {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* 🔑 forces 1080 × 1080 behavior */
+  object-fit: cover;
+  object-position: center;
+  border-bottom: 3px solid #000;
+}
+
+
 
   .event-card__details {
     padding: 1rem;
