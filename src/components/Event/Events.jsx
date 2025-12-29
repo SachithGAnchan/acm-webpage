@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import eventImage from '../Event/ca.jpg';
 import eventImage2 from '../Event/e2.png';
-
+import eventImage3 from '../Event/2025E1.jpg';
 const Events = () => {
   return (
     <StyledWrapper>
@@ -77,7 +77,7 @@ const Events = () => {
         </div>
 
         <div className="event-card__header">
-          <div className="event-card__date">Thursday, 16,23,30 January 2025</div>
+          <div className="event-card__date">Thursday, 16,23,30th January 2025</div>
           <div className="event-card__title">Career Connect -The Thursday Chronicals</div>
         </div>
 
