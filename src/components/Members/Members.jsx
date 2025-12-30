@@ -15,9 +15,9 @@ const currentMembersData = [
     role: "Chair person",
     profilePic: "/images/1.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/pratheeksha0907",
+      linkedin: "https://www.linkedin.com/in/pratheeksha-s-430197297/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      github: "https://github.com/pratheeksha63"
     },
     category: "Executive"
   },
@@ -26,9 +26,9 @@ const currentMembersData = [
     role: "Vice Chair person",
     profilePic: "/images/2.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/Tulipiie0 ",
+      linkedin: "https://www.linkedin.com/in/pratheeksha-7323b928a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      github: "https://github.com/PratheekshaSudhir"
     },
     category: "Executive"
   },
@@ -48,9 +48,9 @@ const currentMembersData = [
     role: "Vice Secretary",
     profilePic: "/images/4.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
+      instagram: "https://instagram.com/aksh_zzzzzz",
       linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      github: "https://github.com/Akshatha-G-S"
     },
     category: "Executive"
   },
@@ -63,16 +63,16 @@ const currentMembersData = [
       linkedin: "https://linkedin.com/in/username",
       github: "https://github.com/username"
     },
-    category: "Executive"
+    category: "Graphic"
   },
           {
     name: "Sachith G Anchan",
     role: "Technical Member",
     profilePic: "/images/6.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/sachithanchan",
+      linkedin: "https://www.linkedin.com/in/sachith-g-anchan-79a670312/",
+      github: "https://github.com/SachithGAnchan"
     },
     category: "Tech"
   },
@@ -81,9 +81,9 @@ const currentMembersData = [
     role: "Technical Member",
     profilePic: "/images/7.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/Thushar_termi8970",
+      linkedin: "https://linkedin.com/in/Thushar---kumar",
+      github: "https://github.com/Thusharctrl"
     },
     category: "Tech"
   },
@@ -92,20 +92,20 @@ const currentMembersData = [
     role: "Event Team",
     profilePic: "/images/8.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/_.hasnainn",
+      linkedin: "https://www.linkedin.com/in/hasnaink87/",
+      github: "https://github.com/hasnainkhan87"
     },
     category: "Event"
   },
                 {
     name: "Prakyath Suvarna",
     role: "Event Team",
-    profilePic: "/images/9.jpg",
+    profilePic: "/images/9.jpg",  
     socialLinks: {
-      instagram: "https://instagram.com/username",
+      instagram: "https://instagram.com/Prakyath._.suvarna",
       linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      github: "https://github.com/Prakyath-suvarna"
     },
     category: "Event"
   },
@@ -114,9 +114,9 @@ const currentMembersData = [
     role: "Event Team",
     profilePic: "/images/10.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/trishalhegde",
+      linkedin: "https://www.linkedin.com/in/trishal-hegde-336358320/",
+      github: "https://github.com/TrishalHegde"
     },
     category: "Event"
   },
@@ -147,8 +147,8 @@ const currentMembersData = [
     role: "Social Media Team",
     profilePic: "/images/13.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
+      instagram: "https://instagram.com/shashankkk._1",
+      linkedin: "https://www.linkedin.com/in/shashank-shanbhag-162150383?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       github: "https://github.com/username"
     },
     category: "Media"
@@ -180,9 +180,9 @@ const currentMembersData = [
     role: "Photography",
     profilePic: "/images/16.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/darshan_.devadiga",
+      linkedin: "https://linkedin.com",
+      github: "https://github.com/darshan-55"
     },
     category: "Media"
   },
@@ -213,9 +213,9 @@ const currentMembersData = [
     role: "Publicity Team",
     profilePic: "/images/19.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/anchalraon",
+      linkedin: "https://www.linkedin.com/in/anchalraon/",
+      github: "https://github.com/AnchalRaon"
     },
     category: "Publicity"
   },
@@ -224,9 +224,9 @@ const currentMembersData = [
     role: "Publicity Team",
     profilePic: "/images/20.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/stuthiachaar",
+      linkedin: "https://www.linkedin.com/in/stuthi-achar-241a6421a/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+      github: "https://github.com/Stuthi15"
     },
     category: "Publicity"
   },
@@ -235,9 +235,9 @@ const currentMembersData = [
     role: "Publicity Team",
     profilePic: "/images/21.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/dhruvi__shetty",
+      linkedin: "https://linkedin.com/in/dhruvi-shetty",
+      github: "https://github.com/Dhruvishetty"
     },
     category: "Publicity"
   },
@@ -257,9 +257,9 @@ const currentMembersData = [
     role: "Documentation Team",
     profilePic: "/images/23.jpg",
     socialLinks: {
-      instagram: "https://instagram.com/username",
-      linkedin: "https://linkedin.com/in/username",
-      github: "https://github.com/username"
+      instagram: "https://instagram.com/swasthikprabhu11",
+      linkedin: "https://www.linkedin.com/in/swasthik-m-prabhu-00437731b/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      github: "https://github.com/Swasthikprabhu372"
     },
     category: "Documentation"
   },
