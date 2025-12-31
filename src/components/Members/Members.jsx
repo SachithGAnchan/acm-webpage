@@ -1,18 +1,38 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './Members.module.css';  // Importing CSS module
-import { useMemo } from 'react';
-import { useState, useEffect } from 'react';
-import LocomotiveScroll from 'locomotive-scroll';
-import 'locomotive-scroll/dist/locomotive-scroll.css';
 import Footer from '../Footer/Footer';
-import HexagonParticles from '../../HexagonParticles';
 import NavigationCompass from '../NavigationCompass';
+import { motion } from "framer-motion";
+import { useLocation } from 'react-router-dom';
+import DotsBackground from './DotsBackground';
+
+
 // as of now it's temporarily here, later we'll make a separate JSON file
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.4,
+      ease: "easeOut",
+    },
+  },
+};
 
 const currentMembersData = [
   {
     name: "Pratheeksha",
-    role: "Chair person",
+    role: "President",
     profilePic: "/images/1.jpg",
     socialLinks: {
       instagram: "https://instagram.com/pratheeksha0907",
@@ -23,7 +43,7 @@ const currentMembersData = [
   },
     {
     name: "Pratheeksha",
-    role: "Vice Chair person",
+    role: "Vice President",
     profilePic: "/images/2.jpg",
     socialLinks: {
       instagram: "https://instagram.com/Tulipiie0 ",
@@ -630,53 +650,59 @@ const previousMembersData = [
       github: "https://github.com/Susandsouza"
     },
     category: 'operation'
-
   },
-
-
 ];
 
 
-
-
 const Members = () => {
-  // Initialize Locomotive Scroll
-  //<NavigationCompass />
-useEffect(() => {
-  const scroll = new LocomotiveScroll({
-    el: document.querySelector('#scroll-container'),
-    smooth: true,
-  });
+  const location = useLocation();
 
-  const updateScroll = () => scroll.update();
+  useEffect(() => {
+    if (!location.state?.scrollTo) return;
 
-  window.addEventListener("load", updateScroll);
+    const id = location.state.scrollTo;
 
-  setTimeout(updateScroll, 500);
+    const timeout = setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        });
+      }
+    }, 300);
 
-  return () => {
-    window.removeEventListener("load", updateScroll);
-    scroll.destroy();
-  };
-}, []);
+    return () => clearTimeout(timeout);
+  }, [location.state]);
 
-
-  //
-
-const renderMemberGroup = (data, category, title) => {                //for multiple members
-  const members = data.filter(member => member.category === category);
-
+  const renderMemberGroup = (data, category, title) => {
+    const members = data.filter(member => member.category === category);
 
     if (members.length === 0) return null;
 
     return (
-      
-      <section className={styles.groupSection} id={category}>
-      <HexagonParticles />
+      <motion.section
+        className={styles.groupSection}
+        id={category}
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        viewport={{ once: true }}
+      >
         <h2 className={styles.sectionHeading}>{title}</h2>
-        <div className={styles.section}>
+        <motion.div
+          className={styles.section}
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {members.map((member, index) => (
-            <div className={styles.card} key={index}>
+            <motion.div
+              className={styles.card}
+              key={`${member.name}-${member.role}`}
+              variants={cardVariants}
+            >
               <div className={styles.profilePic}>
                 <img
                   src={member.profilePic}
@@ -701,31 +727,38 @@ const renderMemberGroup = (data, category, title) => {                //for mult
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         <NavigationCompass />
-      </section>
-      
+      </motion.section>
     );
   };
 
   return (
     <>
-      
-      <div id="scroll-container" className={styles.membersContainer}>
+      {/* 🎨 DOTS BACKGROUND - WRAPS EVERYTHING */}
+      <div style={{ position: 'relative', overflow: 'hidden' }}>
+        <DotsBackground 
+          dotCount={120}
+          dotColor="rgba(100, 200, 255, 0.6)"
+          dotSize={2}
+          speed={0.5}
+          fadeDistance={200}
+        />
+        
         <div className={styles.info}>
           {/* 🔥 NEW MEMBERS (TOP) */}
           <h1 className={styles.yearHeading}>2025–26 Team</h1>
-              {renderMemberGroup(currentMembersData, 'Executive', 'Executive')}
-              {renderMemberGroup(currentMembersData, 'Tech', 'Technical Team')}
-              {renderMemberGroup(currentMembersData, 'Event', 'Event Team')}
-              {renderMemberGroup(currentMembersData, 'Media', 'Media Team')}
-              {renderMemberGroup(currentMembersData, 'Graphic', 'Graphic Team')}
-              {renderMemberGroup(currentMembersData, 'Publicity', 'Publicity Team')}
-              {renderMemberGroup(currentMembersData, 'Documentation', 'Documentation Team')}
-              {renderMemberGroup(currentMembersData, 'Representatives', 'Representatives')}
 
+          {renderMemberGroup(currentMembersData, 'Executive', 'Executive')}
+          {renderMemberGroup(currentMembersData, 'Tech', 'Technical Team')}
+          {renderMemberGroup(currentMembersData, 'Event', 'Event Team')}
+          {renderMemberGroup(currentMembersData, 'Media', 'Media Team')}
+          {renderMemberGroup(currentMembersData, 'Graphic', 'Graphic Team')}
+          {renderMemberGroup(currentMembersData, 'Publicity', 'Publicity Team')}
+          {renderMemberGroup(currentMembersData, 'Documentation', 'Documentation Team')}
+          {renderMemberGroup(currentMembersData, 'Representatives', 'Representatives')}
 
           {/* 🔽 OLD MEMBERS (BELOW) */}
           <h1 id="previous-team" className={styles.yearHeading}>
@@ -735,13 +768,11 @@ const renderMemberGroup = (data, category, title) => {                //for mult
           {renderMemberGroup(previousMembersData, 'officeBearer', 'Executive')}
           {renderMemberGroup(previousMembersData, 'creative', 'Creative')}
           {renderMemberGroup(previousMembersData, 'operation', 'Operations')}
-
         </div>
-      <Footer />
+        
+        <Footer />
       </div>
-
     </>
-
   );
 };
 

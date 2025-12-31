@@ -44,7 +44,7 @@ const currentProfiles = [
 
 const profiles = [
   {
-    name: "Neil Mammen Prakash",
+    name: "Neil Mammen",
     role: "ChairPerson",
     profilePic: '/images/nn.webp'
   },
@@ -56,14 +56,14 @@ const profiles = [
 
   },
   {
-    name: "Rashmitha R Bhangera",
+    name: "Rashmitha R",
     role: "Tresurer",
     profilePic: '/images/Rashmitha.webp'
 
   },
 
   {
-    name: "Kushagr Sharma ",
+    name: "Kushagr",
     role: "WebMaster",
     profilePic: '/images/kkk.jpg'
 
@@ -176,6 +176,7 @@ export default function Pages() {
   const handleMouseEnter5 = () => scrambleReplay5();
   const handleMouseEnter6 = () => scrambleReplay6();
 
+const SCROLL_KEY = "pages-scroll-position";
 
 
   return (
@@ -201,6 +202,9 @@ export default function Pages() {
         >
 
           <h1
+            className="animate-text"
+            data-scroll
+            data-scroll-speed="2"
             style={{
               fontSize: window.innerWidth <= 768 ? '60px' : '100px',
               letterSpacing: '10px',
@@ -210,10 +214,10 @@ export default function Pages() {
               fontWeight: 'bold',
               textAlign: 'center',
               position: 'relative',
-              top: '3vw'
+              top: '0.5vw'
             }}
           >
-            Our Team (2025–26)
+            Our Team 
           </h1>
 
           <div className={styless.cardsContainer}>
@@ -323,7 +327,12 @@ export default function Pages() {
                 ))}
                 <button
                   className={styles.more}
-                  onClick={() => navigate('/members#previous-team')}
+                  onClick={() =>
+                  navigate('/members', {
+                    state: { scrollTo: 'previous-team' }
+                  })
+                }
+
                 >
                   More
                 </button>
