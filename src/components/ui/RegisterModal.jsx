@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { supabase } from '../../supabaseClient';
 
 const overlay = { position:'fixed', top:0, left:0, width:'100vw', height:'100vh', background:'rgba(0,0,0,0.7)', zIndex:9999, display:'flex', alignItems:'center', justifyContent:'center' };
 const modal = { background:'#0d0d0d', border:'1px solid #7c3aed', borderRadius:'16px', padding:'40px', width:'90%', maxWidth:'420px', color:'#fff', fontFamily:'inherit' };
@@ -7,32 +8,45 @@ const btn = { width:'100%', padding:'12px', borderRadius:'8px', border:'none', b
 const ghostBtn = { ...btn, background:'transparent', border:'1px solid #444', marginTop:'10px' };
 
 export default function RegisterModal({ onClose }) {
-  const [view, setView] = useState('login'); // 'login' | 'register' | 'success' | 'loggedin'
+  const [view, setView] = useState('login');
   const [loginForm, setLoginForm] = useState({ email:'', password:'' });
   const [regForm, setRegForm] = useState({ name:'', usn:'', college:'', phone:'', email:'' });
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setError('');
-    const existing = JSON.parse(localStorage.getItem('acm_registrations') || '[]');
-    const user = existing.find(u => u.email === loginForm.email && u.usn === loginForm.password);
-    if (user) {
-      setView('loggedin');
-    } else {
+    setLoading(true);
+    const { data, error } = await supabase
+      .from('registrations')
+      .select('*')
+      .eq('email', loginForm.email)
+      .eq('usn', loginForm.password)
+      .single();
+    setLoading(false);
+    if (error || !data) {
       setError('Invalid email or password. Not registered yet?');
+    } else {
+      setView('loggedin');
     }
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     setError('');
     if (!regForm.name || !regForm.usn || !regForm.phone || !regForm.email) {
       setError('Please fill all fields');
       return;
     }
-    const existing = JSON.parse(localStorage.getItem('acm_registrations') || '[]');
-    existing.push({ ...regForm, registeredAt: new Date().toISOString() });
-    localStorage.setItem('acm_registrations', JSON.stringify(existing));
-    setView('success');
+    setLoading(true);
+    const { error } = await supabase
+      .from('registrations')
+      .insert([{ name: regForm.name, usn: regForm.usn, college: regForm.college, phone: regForm.phone, email: regForm.email }]);
+    setLoading(false);
+    if (error) {
+      setError('Registration failed: ' + error.message);
+    } else {
+      setView('success');
+    }
   };
 
   return (
@@ -45,7 +59,7 @@ export default function RegisterModal({ onClose }) {
             <input style={input} placeholder="Email Address" value={loginForm.email} onChange={e => setLoginForm({...loginForm, email:e.target.value})} />
             <input style={input} type="password" placeholder="Password (your USN)" value={loginForm.password} onChange={e => setLoginForm({...loginForm, password:e.target.value})} />
             {error && <p style={{ color:'#f87171', fontSize:'13px', marginBottom:'12px' }}>{error}</p>}
-            <button style={btn} onClick={handleLogin}>Login</button>
+            <button style={btn} onClick={handleLogin} disabled={loading}>{loading ? 'Checking...' : 'Login'}</button>
             <p style={{ textAlign:'center', color:'#aaa', margin:'16px 0 4px', fontSize:'14px' }}>Not registered yet?</p>
             <button style={ghostBtn} onClick={() => { setView('register'); setError(''); }}>Register here</button>
             <button style={{...ghostBtn, marginTop:'8px'}} onClick={onClose}>Cancel</button>
@@ -61,7 +75,7 @@ export default function RegisterModal({ onClose }) {
             <input style={input} placeholder="Phone Number" value={regForm.phone} onChange={e => setRegForm({...regForm, phone:e.target.value})} />
             <input style={input} placeholder="Email Address" value={regForm.email} onChange={e => setRegForm({...regForm, email:e.target.value})} />
             {error && <p style={{ color:'#f87171', fontSize:'13px', marginBottom:'12px' }}>{error}</p>}
-            <button style={btn} onClick={handleRegister}>Register</button>
+            <button style={btn} onClick={handleRegister} disabled={loading}>{loading ? 'Registering...' : 'Register'}</button>
             <button style={ghostBtn} onClick={() => { setView('login'); setError(''); }}>Back to Login</button>
           </>
         )}
