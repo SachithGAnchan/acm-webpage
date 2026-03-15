@@ -9,8 +9,11 @@ import {
 import ReactGA from 'react-ga';
 import Pages from '../src/Pages';
 import Members from './components/Members/Members';
+import MembersChoicePage from './components/Members/MembersChoicePage';
+import Events from './components/Event/Events';
+import EventChoicePage from './components/Event/EventChoicePage';
 import TerminalAnimation from './TerminalAnimation';
-const TRACKING_ID = process.env.REACT_APP_TRACKING_ID; 
+const TRACKING_ID = process.env.REACT_APP_TRACKING_ID;
 
 ReactGA.initialize(TRACKING_ID);
 
@@ -21,14 +24,34 @@ const router = createBrowserRouter([
   },
   {
     path: "/members",
-    element: <Members />,
+    element: <MembersChoicePage />,
+  },
+  {
+    path: "/members/2025",
+    element: <Members year="2025" />,
+  },
+  {
+    path: "/members/2024",
+    element: <Members year="2024" />,
+  },
+  {
+    path: "/events",
+    element: <EventChoicePage />,
+  },
+  {
+    path: "/events/2025",
+    element: <Events year="2025" />,
+  },
+  {
+    path: "/events/2024",
+    element: <Events year="2024" />,
   },
   {
     path: "/magic",
     element: <TerminalAnimation />
   },
 
-  
+
 
 ]);
 

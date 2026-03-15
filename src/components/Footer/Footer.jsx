@@ -1,42 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLinkedinIn,
   faInstagram,
   faGithub
 } from '@fortawesome/free-brands-svg-icons';
-import { useScramble } from 'use-scramble';
-import { gsap } from 'gsap';
 import styles from './Footer.module.css';
 
 const Footer = () => {
-  const { ref: scrambleRef1, replay: scrambleReplay1 } = useScramble({
-    text: 'Association for',
-    speed: 0.3,
-  });
-  const { ref: scrambleRef2, replay: scrambleReplay2 } = useScramble({
-    text: 'Computing Machinery',
-    speed: 0.4,
-  });
-  const { ref: scrambleRef3, replay: scrambleReplay3 } = useScramble({
-    text: 'NMAMIT Student Chapter',
-    speed: 0.3,
-  });
-
-  // GSAP animation for text entrance
-  useEffect(() => {
-    gsap.from('.scramble-text', {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'power4.out',
-    });
-  }, []);
   const socialLinks = [
-    { name: 'linkedin', icon: faLinkedinIn, url: 'https://www.linkedin.com/company/acm-nmamit/' },
-    { name: 'instagram', icon: faInstagram, url: 'https://www.instagram.com/acm_nitte/' },
-    { name: 'github', icon: faGithub, url: 'https://github.com/acmnmamit' },
+    { name: 'linkedin',  icon: faLinkedinIn, url: 'https://www.linkedin.com/company/acm-nmamit/' },
+    { name: 'instagram', icon: faInstagram,  url: 'https://www.instagram.com/acm_nitte/'         },
+    { name: 'github',    icon: faGithub,     url: 'https://github.com/acmnmamit'                   },
   ];
 
   return (
@@ -44,36 +19,17 @@ const Footer = () => {
       <div className={styles.bigcontainer}>
         <div className={styles.container}>
           <div className={styles.wrapper}>
-            {/* Header Section */}
             <header className={styles.header}>
-            <div className={styles.logoContainer}>
-              <div className={styles.mainhead}>
-                <div
-                  ref={scrambleRef1}
-                  onMouseEnter={() => scrambleReplay1()}
-                  className={styles.title}
-                >Association for
-                </div>
-                <div
-                  ref={scrambleRef2}
-                  onMouseEnter={() => scrambleReplay2()}
-                  className={styles.title}
-                >Computing Machinery
-                </div>
-                <div
-                  ref={scrambleRef3}
-                  onMouseEnter={() => scrambleReplay3()}
-                  className={styles.subtitle}
-                >NMAMIT Student Chapter
+              <div className={styles.logoContainer}>
+                <div className={styles.mainhead}>
+                  <div className={styles.title}>Association for</div>
+                  <div className={styles.title}>Computing Machinery</div>
+                  <div className={styles.subtitle}>NMAMIT Student Chapter</div>
                 </div>
               </div>
-            </div>
-          </header>
-       
+            </header>
 
-        
             <div className={styles.mainGrid}>
-         
               <div className={styles.aboutSection}>
                 <h2 className={styles.sectionTitle}>Find Us</h2>
                 <iframe
@@ -83,15 +39,13 @@ const Footer = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                   className={styles.mapSectionIframe}
-                ></iframe>
+                />
               </div>
 
-              {/* Contact Section */}
               <div className={styles.contactSection}>
                 <h2 className={styles.sectionTitle}>Contact Us</h2>
                 <div className={styles.contactInfo}>
-                  <div>acmnmamit24@gmail.com
-                  </div>
+                  <div>acmnmamit24@gmail.com</div>
                 </div>
                 <h2 className={styles.sectionTitle} style={{ marginTop: '2rem' }}>Connect</h2>
                 <div className={styles.socialLinks}>
@@ -101,7 +55,7 @@ const Footer = () => {
                       href={social.url}
                       className={styles.socialLink}
                       aria-label={social.name}
-                      target="_blank" 
+                      target="_blank"
                       rel="noreferrer"
                     >
                       <FontAwesomeIcon icon={social.icon} className={styles.socialIcon} />
@@ -109,22 +63,14 @@ const Footer = () => {
                   ))}
                 </div>
               </div>
-
-
             </div>
           </div>
-
-
         </div>
         <div className={styles.footerBottom}>
           © 2025 NMAMIT ACM Student Chapter. All rights reserved.
         </div>
-
       </div>
-
-
     </>
-
   );
 };
 

@@ -1,324 +1,261 @@
 import React, { useEffect, useRef } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedinIn, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
+import ChoiceSection from './components/ChoiceSection';
+import eventImage from './components/Event/ca.jpg';
+import eventImage2 from './components/Event/e2.png';
+import acmLogo from './components/Navbar/acm_logo.png';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { Home, Calendar, Users, Terminal } from 'lucide-react';
 import styles from './Pages.module.css';
-import Navbar from './components/Navbar/Navbar';
-import { gsap } from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { useScramble } from 'use-scramble';
-import Footer from './components/Footer/Footer';
-import Events from './components/Event/Events';
-import ProfileCard from './ProfileCard';
-import { useNavigate } from 'react-router-dom';
-import styless from './ProfileCard.module.css';
-import Aboutus from './components/Aboutus';
-import VantaRings from './VantaRings';
-//all profiles 
+import footerStyles from './components/Footer/Footer.module.css';
+import Aurora from './Aurora';
 
-const currentProfiles = [
-  {
-    name: "Pratheeksha",
-    role: "ChairPerson",
-    profilePic: "/images/1.jpg"
-  },
-  {
-    name: "Pratheeksha",
-    role: "Vice ChairPerson",
-    profilePic: "/images/2.jpg"
-  },
-  {
-    name: "Aneesh",
-    role: "Treasurer",
-    profilePic: "/images/3.jpg"
-  },
-  {
-    name: "Akshatha G S",
-    role: "Vice Secretary",
-    profilePic: "/images/4.jpg"
-  }
-];
-
-const profiles = [
-  {
-    name: "Neil Mammen",
-    role: "ChairPerson",
-    profilePic: '/images/nn.webp'
-  },
-  {
-    name: "Namratha M",
-    role: "Vice ChairPerson",
-
-    profilePic: '/images/nam.webp'
-
-  },
-  {
-    name: "Rashmitha R",
-    role: "Tresurer",
-    profilePic: '/images/Rashmitha.webp'
-
-  },
-
-  {
-    name: "Kushagr",
-    role: "WebMaster",
-    profilePic: '/images/kkk.jpg'
-
-  }
-
-];
-
-
-gsap.registerPlugin(useGSAP);
-
-export default function Pages() {
+// ─── Sidebar ────────────────────────────────────────────────────────────────
+function Sidebar() {
   const navigate = useNavigate();
-  const container = useRef(null);
+  const location = useLocation();
+  const path = location.pathname;
+  const navItems = [
+    { icon: <Home size={20} />, label: 'Home', path: '/' },
+    { icon: <Calendar size={20} />, label: 'Events', path: '/events' },
+    { icon: <Users size={20} />, label: 'Members', path: '/members' },
+    { icon: <Terminal size={20} />, label: 'Magic', path: '/magic' },
+  ];
+  return (
+    <nav className={styles.sidebar}>
+      {navItems.map((item, index) => (
+        <div
+          key={index}
+          className={`${styles.iconWrapper} ${path === item.path ? styles.active : ''}`}
+          onClick={() => navigate(item.path)}
+        >
+          {item.icon}
+          <span className={styles.tooltip}>{item.label}</span>
+        </div>
+      ))}
+    </nav>
+  );
+}
+
+// ─── Main Pages Component ────────────────────────────────────────────────────
+export default function Pages() {
   const scrollRef = useRef(null);
-  const buttonRef = useRef(null);
-  const scrollInstanceRef = useRef(null);
+  const scrollInst = useRef(null);
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
-
-  // this would be for upcomig events 
-  const { ref: scrambleRef4, replay: scrambleReplay4 } = useScramble({
-    text: "EVENTS",
-    speed: 0.4,
-  });
-  const { ref: scrambleRef5, replay: scrambleReplay5 } = useScramble({
-    text: "Our Team (2024–25)",
-    speed: 0.4,
-  });
-
-
-  // GSAP Animation
-  useGSAP(() => {
-    gsap.from('.animate-text', {
-      y: 140,
-      opacity: 0,
-      duration: 1,
-      stagger: 0.5,
-      color: 'green'
-    });
-
-    gsap.from(buttonRef.current, {
-      scale: 0.5,
-      opacity: 0,
-      duration: 1.5,
-      delay: 2,
-      ease: 'back.out(1.7)',
-      color: 'pink'
-    });
-
-
-  }, { scope: container });
-
-  // Locomotive Scroll initialization
+  // ── Locomotive Scroll ──
   useEffect(() => {
-  
     const scrollInstance = new LocomotiveScroll({
       el: scrollRef.current,
       smooth: true,
       smoothMobile: true,
     });
-
-    scrollInstanceRef.current = scrollInstance;
-    // Update LocomotiveScroll instance
+    scrollInst.current = scrollInstance;
     scrollInstance.update();
-
-    // Cleanup on unmount
-    return () => {
-      if (scrollInstance) scrollInstance.destroy();
-    };
+    return () => { if (scrollInstance) scrollInstance.destroy(); };
   }, []);
 
-  //this function on clik scrolls to next page or section 
-  const handleScrollToSection = (secID) => {
-    if (scrollInstanceRef.current) {
-      // Scroll to the section with the ID 'section2'
-      scrollInstanceRef.current.scrollTo(secID, {
-        duration: 1000, // Smooth scroll duration (in milliseconds)
+  // ── Nav scroll helper ──
+  const scrollTo = (id) => {
+    if (scrollInst.current) {
+      scrollInst.current.scrollTo(id, {
+        duration: 800,
         offset: 0,
         easing: [0.25, 0.00, 0.35, 1.00],
       });
     }
+    setMenuOpen(false);
   };
 
-  const handleMouseEnter4 = () => scrambleReplay4();
-  const handleMouseEnter5 = () => scrambleReplay5();
+  // ── Section data ──
+  const memberChoices = [
+    { title: 'Team (2025-2026)', subtitle: 'The Current Executive Force', image: '/images/1.jpg', link: '/members/2025' },
+    { title: 'Team (2024-2025)', subtitle: 'The Past Leaders', image: '/images/nn.webp', link: '/members/2024' },
+  ];
+  const eventChoices = [
+    { title: 'Events (2025-2026)', subtitle: 'Upcoming and Current Innovations', image: eventImage, link: '/events/2025' },
+    { title: 'Events (2024-2025)', subtitle: 'Archived Highlights', image: eventImage2, link: '/events/2024' },
+  ];
+  const socialLinks = [
+    { name: 'linkedin', icon: faLinkedinIn, url: 'https://www.linkedin.com/company/acm-nmamit/' },
+    { name: 'instagram', icon: faInstagram, url: 'https://www.instagram.com/acm_nitte/' },
+    { name: 'github', icon: faGithub, url: 'https://github.com/acmnmamit' },
+  ];
+
   return (
     <>
+      {/* ── Sidebar ── */}
+      <Sidebar />
+
+      <Aurora
+        colorStops={["#7cff67","#B19EEF","#5227FF"]}
+        blend={0.5}
+        amplitude={1.0}
+        speed={1}
+      />
 
       <div className={styles.big}>
         <div className={styles.pagesContainer} ref={scrollRef} data-scroll-container>
-          <Navbar onNavigate={handleScrollToSection} />
-          {/* first page(Hero) */}
 
-          <div id='section1' className={styles.pageSection + ' ' + styles.section1}
-            data-scroll-section ref={container}>
-
-            <VantaRings />
-
-          </div>
-
-                {/* CURRENT YEAR CORE MEMBERS */}
-        <div
-          id="sectionCurrentTeam"
-          className={styles.pageSection + ' ' + styles.section4}
-          data-scroll-section
-        >
-
-          <h1
-            className="animate-text"
-            data-scroll
-            data-scroll-speed="2"
-            style={{
-              fontSize: window.innerWidth <= 768 ? '60px' : '100px',
-              letterSpacing: '10px',
-              marginTop: window.innerWidth <= 768 ? '10px' : '15px',
-              color: '#FFFFF0',
-              textTransform: 'uppercase',
-              fontWeight: 'bold',
-              textAlign: 'center',
-              position: 'relative',
-              top: '0.5vw'
-            }}
-          >
-            Our Team 
-          </h1>
-
-          <div className={styless.cardsContainer}>
-            {currentProfiles.map((profile, index) => (
-              <ProfileCard
-                key={index}
-                name={profile.name}
-                role={profile.role}
-                profilePic={profile.profilePic}
-              />
-            ))}
-
-            <button
-              className={styles.more}
-              onClick={() => navigate('/members')}
-              style={{ cursor: 'pointer' }}
-            >
-              More
-            </button>
-          </div>
-        </div>
-
-
-          {/* second page about section  */}
-          <div id="section2" className={styles.pageSection + ' ' + styles.section2} data-scroll-section>
-            {/* <h1 ref={scrambleRef6} onMouseEnter={handleMouseEnter6} className="animate-text" data-scroll data-scroll-speed="2">About</h1> */}
-            <Aboutus />
-            {/* <h1 className="animate-text" data-scroll data-scroll-speed="2">Coming Soon...</h1> */}
-          </div>
-
-
-          {/* 3rd page upcoming evenets  */}
-
-          <div id='section3' className={styles.pageSection + ' ' + styles.section3} data-scroll-section>
-            <h1 ref={scrambleRef4} onMouseEnter={handleMouseEnter4}
-              style={{
-                position: 'relative',
-                top: '2.8vw',
-                fontSize: '100px',
-                letterSpacing: '10px',
-                color: '#FFFFF0',
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                marginBottom: '.5vw',
-                textAlign: 'center',
-              }}
-              data-scroll data-scroll-speed="2"
-            >
-              ..
-            </h1>
-            {<Events />}
-            {/*<button style={
-            {
-              position: 'relative',
-              top: '2vw'
-            }
-
-          } className={styles.registerBtn} >More</button> */}
-
-          </div>
-
-
-
-          {/* core members */}
-
-          <div
-            id="sectionPreviousTeam"
-            className={styles.pageSection + ' ' + styles.section4}
-            data-scroll-section
-          >
-
-            <h1 ref={scrambleRef5} onMouseEnter={handleMouseEnter5}
-              style={{
-                fontSize: window.innerWidth <= 768 ? '60px' : '100px',
-                letterSpacing: '10px',
-                marginTop: window.innerWidth <= 768 ? '10px' : '15px',
-                color: '#FFFFF0',
-                textTransform: 'uppercase',
-                fontWeight: 'bold',
-                textAlign: 'center',
-                position: 'relative',
-                top: '3vw'
-              }}
-              className="animate-text" data-scroll data-scroll-speed="2">Our Team (2024–25)</h1>
-
-
-
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                flexDirection: 'row',
-                gap: '20px',
-
-              }}
-            >
-
-              <div className={styless.cardsContainer}>
-
-                {profiles.map((profile, index) => (
-                  <ProfileCard
-                    key={index}
-                    name={profile.name}
-                    role={profile.role}
-                    profilePic={profile.profilePic}
-                  />
-                ))}
-                <button
-                  className={styles.more}
-                  onClick={() =>
-                  navigate('/members', {
-                    state: { scrollTo: 'previous-team' }
-                  })
-                }
-
-                >
-                  More
-                </button>
-
+          {/* ── NAVBAR ── */}
+          <nav className={styles.navbar}>
+            <div className={styles.navbarContent}>
+              <div className={styles.logoContainer}>
+                <img className={styles.navLogo} src={acmLogo} alt="ACM Logo" />
+                <span className={styles.clubName}>@NMAMIT</span>
               </div>
+
+              <ul className={styles.desktopMenu}>
+                <li className={styles.pillItem}>Add</li>
+                <li className={styles.pillItem}>Login</li>
+              </ul>
+
+              <button className={styles.menuToggle} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+                {menuOpen ? <FaTimes /> : <FaBars />}
+              </button>
             </div>
 
-          </div>
+            {/* Mobile slide menu */}
+            <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}>
+              <ul className={styles.mobileMenuList}>
+                <li>Add</li>
+                <li>Login</li>
+              </ul>
+            </div>
+          </nav>
 
-        <div style={{
-          backgroundColor: 'black',
-        }} id="section5" className={styles.foo} data-scroll-section>
+          {menuOpen && <div className={styles.blurOverlay} onClick={() => setMenuOpen(false)} />}
 
-          <Footer/>
+          {/* ── HERO (section 1) ── */}
+          <section
+            id="section1"
+            className={`${styles.pageSection} ${styles.section1}`}
+            data-scroll-section
+          >
+            <div className={styles.heroVanta}>
+              <div className={styles.heroText}>
+                <h1 className={styles.heroTitle}>
+                  Association for<br />
+                  Computing<br />
+                  Machinery
+                </h1>
+                <p className={styles.heroDesc}>
+                  NMAMIT's premier computing community.<br />
+                  Realizing Ideas, Inspiring the next.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ── OUR MEMBERS (section 2) ── */}
+          <section
+            id="sectionTeam"
+            className={`${styles.pageSection} ${styles.section4}`}
+            data-scroll-section
+          >
+            <h2 className={styles.sectionHeading}>Our Members</h2>
+            <ChoiceSection choices={memberChoices} />
+          </section>
+
+          {/* ── OUR EVENTS (section 3) ── */}
+          <section
+            id="sectionEvents"
+            className={`${styles.pageSection} ${styles.section3}`}
+            data-scroll-section
+          >
+            <h2 className={styles.sectionHeading}>Our Events</h2>
+            <ChoiceSection choices={eventChoices} />
+          </section>
+
+          {/* ── ABOUT US (section 4) ── */}
+          <section
+            id="sectionAbout"
+            className={`${styles.pageSection} ${styles.section2}`}
+            data-scroll-section
+          >
+            <div className={styles.aboutContent}>
+              <h1 className={styles.aboutTitle}>About Us</h1>
+              <p className={styles.aboutDesc}>
+                The ACM Student Chapter at our college is a dynamic community of driven and passionate
+                tech enthusiasts, committed to promoting innovation, collaboration, and continuous learning.
+              </p>
+              <p className={styles.aboutDesc}>
+                By fostering an environment of creativity and knowledge-sharing, we strive to prepare
+                students for a future of excellence in technology and leadership. Join us to unlock
+                exciting opportunities, elevate your skills, and be part of a thriving network shaping
+                tomorrow's tech landscape.
+              </p>
+              <a
+                className={styles.readMoreBtn}
+                href="https://www.acm.org/about-acm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read More
+              </a>
+            </div>
+          </section>
+
+          {/* ── FOOTER (section 5) ── */}
+          <section
+            id="sectionFooter"
+            className={styles.footerSection}
+            data-scroll-section
+          >
+            <div className={footerStyles.bigcontainer}>
+              <div className={footerStyles.container}>
+                <div className={footerStyles.wrapper}>
+                  <header className={footerStyles.header}>
+                    <div className={footerStyles.logoContainer}>
+                      <div className={footerStyles.mainhead}>
+                        <div className={footerStyles.title}>Association for</div>
+                        <div className={footerStyles.title}>Computing Machinery</div>
+                        <div className={footerStyles.subtitle}>NMAMIT Student Chapter</div>
+                      </div>
+                    </div>
+                  </header>
+                  <div className={footerStyles.mainGrid}>
+                    <div className={footerStyles.aboutSection}>
+                      <h2 className={footerStyles.sectionTitle}>Find Us</h2>
+                      <iframe
+                        title="Google Maps Location"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3884.6730533394875!2d74.93141407508013!3d13.18300258715209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbb56415ad85e5b%3A0x10b77ac6f6afc7fa!2sN.M.A.M.%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1733416769802!5m2!1sen!2sin"
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className={footerStyles.mapSectionIframe}
+                      />
+                    </div>
+                    <div className={footerStyles.contactSection}>
+                      <h2 className={footerStyles.sectionTitle}>Contact Us</h2>
+                      <div className={footerStyles.contactInfo}>
+                        <div>acmnmamit24@gmail.com</div>
+                      </div>
+                      <h2 className={footerStyles.sectionTitle} style={{ marginTop: '2rem' }}>Connect</h2>
+                      <div className={footerStyles.socialLinks}>
+                        {socialLinks.map((s) => (
+                          <a key={s.name} href={s.url} className={footerStyles.socialLink}
+                            aria-label={s.name} target="_blank" rel="noreferrer">
+                            <FontAwesomeIcon icon={s.icon} className={footerStyles.socialIcon} />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={footerStyles.footerBottom}>
+                © 2025 NMAMIT ACM Student Chapter. All rights reserved.
+              </div>
+            </div>
+          </section>
+
         </div>
-
-
-        </div >
       </div>
-
     </>
-
   );
 }

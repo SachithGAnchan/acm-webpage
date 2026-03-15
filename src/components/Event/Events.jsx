@@ -8,216 +8,216 @@ import eventImage3 from '../Event/2025E1.jpg';
 import eventImage4 from '../Event/codeauction2.jpeg';
 import eventImage5 from '../Event/interviewroom.jpeg';
 import eventImage6 from '../Event/opensource.jpeg';
-const Events = () => {
+const Events = ({ year }) => {
   return (
     <>
       {/* Current Year Events */}
-      <Section>
-        <SectionTitle>Events 2025</SectionTitle>
-        <StyledWrapper>
+      {(!year || year === '2025') && (
+        <Section>
+          <SectionTitle>Events 2025</SectionTitle>
+          <StyledWrapper>
 
-          {/* Career Connect */}
-          <div className="event-card event-card--ended">
-            <div className="event-card__browser-bar">
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-            </div>
-
-            <div className="event-card__header">
-              <div className="event-card__date">Thursday, 16,23,30th October 2025</div>
-              <div className="event-card__title">Career Connect</div>
-            </div>
-
-            <img src={eventImage3} alt="Event" className="event-card__image" />
-
-            <div className="event-card__details">
-              <div className="event-card__description">
-                Career Connect - The Thursday Chronicles
+            {/* Career Connect */}
+            <div className="event-card event-card--ended">
+              <div className="event-card__browser-bar">
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
               </div>
 
-              <div className="event-card__info">
-                <div className="event-card__location">📍 Mode: Online (Open For All)</div>
-                <div className="event-card__team-size">👥 Individual Participation</div>
+              <div className="event-card__header">
+                <div className="event-card__date">Thursday, 16,23,30th October 2025</div>
+                <div className="event-card__title">Career Connect</div>
               </div>
 
-              <div className="event-card__actions">
-                <a className="event-card__button event-card__button--ended">Ended</a>
+              <img src={eventImage3} alt="Event" className="event-card__image" />
+
+              <div className="event-card__details">
+                <div className="event-card__description">
+                  Career Connect - The Thursday Chronicles
+                </div>
+
+                <div className="event-card__info">
+                  <div className="event-card__location">📍 Mode: Online (Open For All)</div>
+                  <div className="event-card__team-size">👥 Individual Participation</div>
+                </div>
+
+                <div className="event-card__actions">
+                  <a className="event-card__button event-card__button--ended">Ended</a>
+                </div>
               </div>
             </div>
-          </div>
 
 
-          {/* Interview Room */}
-          <div className="event-card event-card--ended">
-            <div className="event-card__browser-bar">
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-            </div>
-
-            <div className="event-card__header">
-              <div className="event-card__date">10th & 11th January 2026</div>
-              <div className="event-card__title">The Interview Room</div>
-            </div>
-
-            <img src={eventImage5} alt="Interview Room" className="event-card__image" />
-
-            <div className="event-card__details">
-              <div className="event-card__description">
-                1-on-1 mock interviews and resume review sessions with industry experts.
+            {/* Interview Room */}
+            <div className="event-card event-card--ended">
+              <div className="event-card__browser-bar">
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
               </div>
 
-              <div className="event-card__info">
-                <div className="event-card__location">📍 Mode: Online</div>
-                <div className="event-card__team-size">👥 Limited to 20 Participants</div>
+              <div className="event-card__header">
+                <div className="event-card__date">10th & 11th January 2026</div>
+                <div className="event-card__title">The Interview Room</div>
               </div>
 
-              <div className="event-card__actions">
-                <a className="event-card__button event-card__button--ended">
-                  Ended
-                </a>
+              <img src={eventImage5} alt="Interview Room" className="event-card__image" />
+
+              <div className="event-card__details">
+                <div className="event-card__description">
+                  1-on-1 mock interviews and resume review sessions with industry experts.
+                </div>
+
+                <div className="event-card__info">
+                  <div className="event-card__location">📍 Mode: Online</div>
+                  <div className="event-card__team-size">👥 Limited to 20 Participants</div>
+                </div>
+
+                <div className="event-card__actions">
+                  <a className="event-card__button event-card__button--ended">
+                    Ended
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          {/* The Great Code Auction 2 */}
-          <div className="event-card event-card--ended">
-            <div className="event-card__browser-bar">
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-            </div>
-
-            <div className="event-card__header">
-              <div className="event-card__date">Saturday, 24th January 2026</div>
-              <div className="event-card__title">The Great Code Auction 2</div>
-            </div>
-
-            <img src={eventImage4} alt="The Great Code Auction" className="event-card__image" />
-
-            <div className="event-card__details">
-              <div className="event-card__description">
-                A strategic coding competition where teams bid for challenges and code to win.
+            {/* The Great Code Auction 2 */}
+            <div className="event-card event-card--ended">
+              <div className="event-card__browser-bar">
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
               </div>
 
-              <div className="event-card__info">
-                <div className="event-card__location">📍 Venue: ISL02 & ISL03</div>
-                <div className="event-card__team-size">👥 Team Size: 2–3 Members</div>
+              <div className="event-card__header">
+                <div className="event-card__date">Saturday, 24th January 2026</div>
+                <div className="event-card__title">The Great Code Auction 2</div>
               </div>
 
-              <div className="event-card__actions">
-                <a className="event-card__button event-card__button--ended">
-                  Ended
-                </a>
+              <img src={eventImage4} alt="The Great Code Auction" className="event-card__image" />
+
+              <div className="event-card__details">
+                <div className="event-card__description">
+                  A strategic coding competition where teams bid for challenges and code to win.
+                </div>
+
+                <div className="event-card__info">
+                  <div className="event-card__location">📍 Venue: ISL02 & ISL03</div>
+                  <div className="event-card__team-size">👥 Team Size: 2–3 Members</div>
+                </div>
+
+                <div className="event-card__actions">
+                  <a className="event-card__button event-card__button--ended">
+                    Ended
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-          {/* OpenSource Lab */}
-          <div className="event-card event-card--ended">
-            <div className="event-card__browser-bar">
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-            </div>
-
-            <div className="event-card__header">
-              <div className="event-card__date">Sunday, 9th February 2026</div>
-              <div className="event-card__title">OpenSource Lab</div>
-            </div>
-
-            <img src={eventImage6} alt="OpenSource Lab" className="event-card__image" />
-
-            <div className="event-card__details">
-              <div className="event-card__description">
-                Hands-on workshop on getting started with open source contributions.
+            {/* OpenSource Lab */}
+            <div className="event-card event-card--ended">
+              <div className="event-card__browser-bar">
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
               </div>
 
-              <div className="event-card__info">
-                <div className="event-card__location">📍 Venue: ISL 02 & ISL 03</div>
-                <div className="event-card__team-size">👥 Participation: Individual</div>
+              <div className="event-card__header">
+                <div className="event-card__date">Sunday, 9th February 2026</div>
+                <div className="event-card__title">OpenSource Lab</div>
               </div>
 
-              <div className="event-card__actions">
-                <a className="event-card__button event-card__button--ended">
-                  Ended
-                </a>
+              <img src={eventImage6} alt="OpenSource Lab" className="event-card__image" />
+
+              <div className="event-card__details">
+                <div className="event-card__description">
+                  Hands-on workshop on getting started with open source contributions.
+                </div>
+
+                <div className="event-card__info">
+                  <div className="event-card__location">📍 Venue: ISL 02 & ISL 03</div>
+                  <div className="event-card__team-size">👥 Participation: Individual</div>
+                </div>
+
+                <div className="event-card__actions">
+                  <a className="event-card__button event-card__button--ended">
+                    Ended
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        </StyledWrapper>
-      </Section>
+          </StyledWrapper>
+        </Section>
+      )}
 
-
-
-
-
-      <Section>
-        <SectionTitle>Previous Events (2024–25)</SectionTitle>
-        <StyledWrapper>
-          {/* Ended Event */}
-          <div className="event-card event-card--ended">
-            <div className="event-card__browser-bar">
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-            </div>
-
-            <div className="event-card__header">
-              <div className="event-card__date">Saturday, 18th January 2025</div>
-              <div className="event-card__title">The Great Code Auction</div>
-            </div>
-
-            <img src={eventImage} alt="Event" className="event-card__image" />
-
-            <div className="event-card__details">
-              <div className="event-card__description">The Great Code Auction</div>
-              <div className="event-card__info">
-                <div className="event-card__location">📍 APJ Block, 4th Floor, ISL01 & ISL02</div>
-                <div className="event-card__team-size">👥 Team Size: 2-3 Members</div>
+      {(!year || year === '2024') && (
+        <Section>
+          <SectionTitle>Previous Events (2024–25)</SectionTitle>
+          <StyledWrapper>
+            {/* Ended Event */}
+            <div className="event-card event-card--ended">
+              <div className="event-card__browser-bar">
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
               </div>
-              <div className="event-card__actions">
-                <a className="event-card__button event-card__button--ended">Ended</a>
+
+              <div className="event-card__header">
+                <div className="event-card__date">Saturday, 18th January 2025</div>
+                <div className="event-card__title">The Great Code Auction</div>
+              </div>
+
+              <img src={eventImage} alt="Event" className="event-card__image" />
+
+              <div className="event-card__details">
+                <div className="event-card__description">The Great Code Auction</div>
+                <div className="event-card__info">
+                  <div className="event-card__location">📍 APJ Block, 4th Floor, ISL01 & ISL02</div>
+                  <div className="event-card__team-size">👥 Team Size: 2-3 Members</div>
+                </div>
+                <div className="event-card__actions">
+                  <a className="event-card__button event-card__button--ended">Ended</a>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Upcoming Event */}
-          <div className="event-card">
-            <div className="event-card__browser-bar">
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-              <div className="event-card__circle"></div>
-            </div>
-
-            <div className="event-card__header">
-              {/* <div className="event-card__upcoming-badge">Upcoming</div>*/}
-              <div className="event-card__date">Saturday, 8th March 2025</div>
-              <div className="event-card__title">Manual Testing & Resume Writing</div>
-            </div>
-
-            <img src={eventImage2} alt="Event" className="event-card__image" />
-
-            <div className="event-card__details">
-              <div className="event-card__description">Manual Testing & Resume Writing</div>
-              <div className="event-card__info">
-                <div className="event-card__location">📍 Venue: Online (Open for All)</div>
-                <div className="event-card__team-size">👥 Team Size: 2-3 Members</div>
+            {/* Upcoming Event */}
+            <div className="event-card">
+              <div className="event-card__browser-bar">
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
+                <div className="event-card__circle"></div>
               </div>
-              <div className="event-card__actions">
-                <a
-                  className="event-card__button event-card__button--ended"
-                /*href="https://forms.gle/nvnVCksphbdQV9nf7"
-                target='_blank'
-                rel="noopener noreferrer"*/
-                >
-                  Ended
-                </a>
+
+              <div className="event-card__header">
+                {/* <div className="event-card__upcoming-badge">Upcoming</div>*/}
+                <div className="event-card__date">Saturday, 8th March 2025</div>
+                <div className="event-card__title">Manual Testing & Resume Writing</div>
+              </div>
+
+              <img src={eventImage2} alt="Event" className="event-card__image" />
+
+              <div className="event-card__details">
+                <div className="event-card__description">Manual Testing & Resume Writing</div>
+                <div className="event-card__info">
+                  <div className="event-card__location">📍 Venue: Online (Open for All)</div>
+                  <div className="event-card__team-size">👥 Team Size: 2-3 Members</div>
+                </div>
+                <div className="event-card__actions">
+                  <a
+                    className="event-card__button event-card__button--ended"
+                  /*href="https://forms.gle/nvnVCksphbdQV9nf7"
+                  target='_blank'
+                  rel="noopener noreferrer"*/
+                  >
+                    Ended
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
 
-        </StyledWrapper>
-      </Section>
+          </StyledWrapper>
+        </Section>
+      )}
     </>
   );
 };
@@ -226,6 +226,8 @@ const Events = () => {
 const Section = styled.section`
     width: 100%;
     margin-bottom: 4rem;
+    background-color: #08071a;
+    padding-top: 2rem;
   `;
 
 const SectionTitle = styled.h2`
@@ -246,6 +248,7 @@ const StyledWrapper = styled.div`
   gap: 6vw;
   font-family: "Arial", sans-serif;
   min-height: 100vh;
+  background-color: #08071a;
 
   .event-card {
     width: 400px;

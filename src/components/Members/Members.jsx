@@ -654,7 +654,7 @@ const previousMembersData = [
 ];
 
 
-const Members = () => {
+const Members = ({ year }) => {
   const location = useLocation();
 
   useEffect(() => {
@@ -738,7 +738,7 @@ const Members = () => {
   return (
     <>
       {/* 🎨 DOTS BACKGROUND - WRAPS EVERYTHING */}
-      <div style={{ position: 'relative', overflow: 'hidden' }}>
+      <div style={{ position: 'relative', overflow: 'hidden', backgroundColor: '#08071a' }}>
         <DotsBackground 
           dotCount={120}
           dotColor="rgba(100, 200, 255, 0.6)"
@@ -746,31 +746,36 @@ const Members = () => {
           speed={0.5}
           fadeDistance={200}
         />
-        
         <div className={styles.info}>
-          {/* 🔥 NEW MEMBERS (TOP) */}
-          <h1 className={styles.yearHeading}>2025–26 Team</h1>
+          {(!year || year === '2025') && (
+            <>
+              {/* 🔥 NEW MEMBERS (TOP) */}
+              <h1 className={styles.yearHeading}>2025–26 Team</h1>
 
-          {renderMemberGroup(currentMembersData, 'Executive', 'Executive')}
-          {renderMemberGroup(currentMembersData, 'Tech', 'Technical Team')}
-          {renderMemberGroup(currentMembersData, 'Event', 'Event Team')}
-          {renderMemberGroup(currentMembersData, 'Media', 'Media Team')}
-          {renderMemberGroup(currentMembersData, 'Graphic', 'Graphic Team')}
-          {renderMemberGroup(currentMembersData, 'Publicity', 'Publicity Team')}
-          {renderMemberGroup(currentMembersData, 'Documentation', 'Documentation Team')}
-          {renderMemberGroup(currentMembersData, 'Representatives', 'Representatives')}
+              {renderMemberGroup(currentMembersData, 'Executive', 'Executive')}
+              {renderMemberGroup(currentMembersData, 'Tech', 'Technical Team')}
+              {renderMemberGroup(currentMembersData, 'Event', 'Event Team')}
+              {renderMemberGroup(currentMembersData, 'Media', 'Media Team')}
+              {renderMemberGroup(currentMembersData, 'Graphic', 'Graphic Team')}
+              {renderMemberGroup(currentMembersData, 'Publicity', 'Publicity Team')}
+              {renderMemberGroup(currentMembersData, 'Documentation', 'Documentation Team')}
+              {renderMemberGroup(currentMembersData, 'Representatives', 'Representatives')}
+            </>
+          )}
 
-          {/* 🔽 OLD MEMBERS (BELOW) */}
-          <h1 id="previous-team" className={styles.yearHeading}>
-            2024–25 Team
-          </h1>
+          {(!year || year === '2024') && (
+            <>
+              {/* 🔽 OLD MEMBERS (BELOW) */}
+              <h1 id="previous-team" className={styles.yearHeading}>
+                2024–25 Team
+              </h1>
 
-          {renderMemberGroup(previousMembersData, 'officeBearer', 'Executive')}
-          {renderMemberGroup(previousMembersData, 'creative', 'Creative')}
-          {renderMemberGroup(previousMembersData, 'operation', 'Operations')}
+              {renderMemberGroup(previousMembersData, 'officeBearer', 'Executive')}
+              {renderMemberGroup(previousMembersData, 'creative', 'Creative')}
+              {renderMemberGroup(previousMembersData, 'operation', 'Operations')}
+            </>
+          )}
         </div>
-        
-        <Footer />
       </div>
     </>
   );

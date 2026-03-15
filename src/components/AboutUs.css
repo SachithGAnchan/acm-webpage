@@ -12,7 +12,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
+    min-height: 60vh; /* Allow more compact layout */
     background-image: url("acm_globe.jpg"); /* Replace with your image path */
     background-size: cover;
     background-position: center;

@@ -1,15 +1,14 @@
-/* Navbar */
+/* ── Navbar ── */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #000;
+  background-color: transparent;           /* fully transparent over hero */
   z-index: 10;
-  padding: 10px 20px;
+  padding: 12px 24px;
 }
 
-/* Navbar Content */
 .navbarContent {
   display: flex;
   align-items: center;
@@ -17,64 +16,89 @@
   width: 100%;
 }
 
-/* Logo and Club Name Container */
+/* Logo + club name */
 .logoContainer {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-/* Logo */
 .logo {
-  width: 5.5vw; /* Default size for larger screens */
-  height: auto;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 50%;
 }
 
 .clubName {
   color: #fff;
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ── Desktop pill nav ── */
+.desktopMenu {
+  display: flex;
+  list-style: none;
   margin: 0;
-  display: inline-block;
+  padding: 0;
+  gap: 8px;
 }
-.magic{
-  padding-left: 65vw;
- 
+
+.pillItem {
+  padding: 8px 20px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.15s;
+  white-space: nowrap;
 }
-/* Mobile Toggle Button */
+
+.pillItem:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* ── Mobile toggle ── */
 .menuToggle {
+  display: none;
   background: none;
   border: none;
   color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
-  display: flex;
   align-items: center;
 }
 
-/* Mobile Menu */
+/* ── Mobile menu ── */
 .mobileMenu {
-  margin-top: 3vw;
   position: fixed;
   top: 0;
   right: -100%;
   width: 250px;
   height: 100%;
-  background-color: #000;
-  overflow-y: auto; /* Allow scrolling */
+  background: rgba(30, 0, 60, 0.95);
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
   transition: right 0.3s ease-in-out;
   z-index: 9;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
+  padding: 60px 20px 20px;
+  margin-top: 0;
 }
 
 .mobileMenu.open {
-  right: 0; /* Slide-in effect */
+  right: 0;
 }
 
-/* Blur Overlay for Mobile Menu */
 .blurOverlay {
   position: fixed;
   top: 0;
@@ -93,7 +117,6 @@
   visibility: visible;
 }
 
-/* Menu Items */
 .menu {
   list-style: none;
   padding: 0;
@@ -102,67 +125,36 @@
 }
 
 .menuItem {
-  margin: 20px 0;
+  margin: 16px 0;
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #fff;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
 
 .menuItem:hover {
-  color: #00ffc6;
+  color: #f39c12;
 }
 
 .noScroll {
-  overflow: hidden; 
+  overflow: hidden;
 }
 
-@media (max-width: 1024px) { 
-  .logo {
-    width: 7vw; 
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .desktopMenu {
+    display: none;
   }
-
-  .magic {
-    padding-left: 0;
-    position: absolute;
-    right: 70px;
-    top: 52%;
-    transform: translateY(-50%);
-  }
-  
   .menuToggle {
+    display: flex;
     position: absolute;
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 11; 
+    z-index: 11;
   }
-}
-
-@media (max-width: 768px) { /* Mobile view */
   .logo {
-    width: 12vw; 
-    margin-left: -4vw;
-  }
-  .magic {
-    padding-left: 0;
-    position: absolute;
-    right: 50px;
-    top: 52%;
-    transform: translateY(-50%);
-  }
-  clubName{
-    font-size: 1.3rem;
-  }
-  
-  .menuToggle {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 11; 
+    width: 38px;
+    height: 38px;
   }
 }

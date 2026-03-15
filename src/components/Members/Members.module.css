@@ -10,7 +10,7 @@ body{
   /* min-height: 100vh; */
 }
 .membersContainer {
-  background-color: #000000;
+  background-color: #08071a;
   min-height: 100vh;
 }
 
@@ -163,9 +163,8 @@ body{
 {
   .membersContainer {
     margin-top: 1vw;
-    background-color: black;
+    background-color: #08071a;
     height: auto;
-  
   }
 
   .sectionHeading {
