@@ -1,22 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
 import ChoiceSection from './components/ChoiceSection';
 import eventImage from './components/Event/ca.jpg';
 import eventImage2 from './components/Event/e2.png';
 import acmLogo from './components/Navbar/acm_logo.png';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { Home, Calendar, Users, Terminal } from 'lucide-react';
 import styles from './Pages.module.css';
-import footerStyles from './components/Footer/Footer.module.css';
 import Aurora from './Aurora';
 import FAQSection from './components/FAQSection';
 import ConnectSection from './components/ConnectSection';
-import Lightning from './components/ui/Lightning';
 import RegisterModal from './components/ui/RegisterModal';
 
 
@@ -40,17 +34,6 @@ export default function Pages() {
     return () => { if (scrollInstance) scrollInstance.destroy(); };
   }, []);
 
-  // ── Nav scroll helper ──
-  const scrollTo = (id) => {
-    if (scrollInst.current) {
-      scrollInst.current.scrollTo(id, {
-        duration: 800,
-        offset: 0,
-        easing: [0.25, 0.00, 0.35, 1.00],
-      });
-    }
-    setMenuOpen(false);
-  };
 
   // ── Section data ──
   const memberChoices = [
@@ -60,11 +43,6 @@ export default function Pages() {
   const eventChoices = [
     { title: 'Events (2025-2026)', subtitle: 'Upcoming and Current Innovations', image: eventImage, link: '/events/2025' },
     { title: 'Events (2024-2025)', subtitle: 'Archived Highlights', image: eventImage2, link: '/events/2024' },
-  ];
-  const socialLinks = [
-    { name: 'linkedin', icon: faLinkedinIn, url: 'https://www.linkedin.com/company/acm-nmamit/' },
-    { name: 'instagram', icon: faInstagram, url: 'https://www.instagram.com/acm_nitte/' },
-    { name: 'github', icon: faGithub, url: 'https://github.com/acmnmamit' },
   ];
 
   return (
@@ -114,13 +92,46 @@ export default function Pages() {
             className={`${styles.pageSection} ${styles.section1}`}
             data-scroll-section
           >
-            <div className={styles.heroVanta}><div style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",zIndex:0}}><Lightning hue={260} xOffset={0} speed={1} intensity={1} size={1} /></div>
+            <div className={styles.heroVanta}>
               <div className={styles.heroText}>
-                <h1 className={styles.heroTitle}>
-                  Association for<br />
-                  Computing<br />
-                  Machinery
-                </h1>
+                <motion.h1 
+                  className={styles.heroTitle}
+                  initial="hidden"
+                  animate="visible"
+                  variants={{
+                    visible: { transition: { staggerChildren: 0.15 } }
+                  }}
+                >
+                  <motion.span 
+                    className={styles.heroTitlePrefix}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+                    }}
+                  >
+                    Association for
+                  </motion.span>
+                  <span className={styles.heroTitleMain}>
+                    <motion.span 
+                      className={styles.heroWord}
+                      variants={{
+                        hidden: { opacity: 0, x: -30, filter: "blur(10px)" },
+                        visible: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: "easeOut" } }
+                      }}
+                    >
+                      Computing
+                    </motion.span>
+                    <motion.span 
+                      className={styles.heroWord}
+                      variants={{
+                        hidden: { opacity: 0, x: -30, filter: "blur(10px)" },
+                        visible: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 1, ease: "easeOut" } }
+                      }}
+                    >
+                      Machinery
+                    </motion.span>
+                  </span>
+                </motion.h1>
                 <p className={styles.heroDesc}>
                   NMAMIT's premier computing community.<br />
                   Realizing Ideas, Inspiring the next.
