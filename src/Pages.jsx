@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -13,33 +14,9 @@ import { Home, Calendar, Users, Terminal } from 'lucide-react';
 import styles from './Pages.module.css';
 import footerStyles from './components/Footer/Footer.module.css';
 import Aurora from './Aurora';
+import FAQSection from './components/FAQSection';
+import ConnectSection from './components/ConnectSection';
 
-// ─── Sidebar ────────────────────────────────────────────────────────────────
-function Sidebar() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const path = location.pathname;
-  const navItems = [
-    { icon: <Home size={20} />, label: 'Home', path: '/' },
-    { icon: <Calendar size={20} />, label: 'Events', path: '/events' },
-    { icon: <Users size={20} />, label: 'Members', path: '/members' },
-    { icon: <Terminal size={20} />, label: 'Magic', path: '/magic' },
-  ];
-  return (
-    <nav className={styles.sidebar}>
-      {navItems.map((item, index) => (
-        <div
-          key={index}
-          className={`${styles.iconWrapper} ${path === item.path ? styles.active : ''}`}
-          onClick={() => navigate(item.path)}
-        >
-          {item.icon}
-          <span className={styles.tooltip}>{item.label}</span>
-        </div>
-      ))}
-    </nav>
-  );
-}
 
 // ─── Main Pages Component ────────────────────────────────────────────────────
 export default function Pages() {
@@ -89,10 +66,9 @@ export default function Pages() {
   return (
     <>
       {/* ── Sidebar ── */}
-      <Sidebar />
 
       <Aurora
-        colorStops={["#7cff67","#B19EEF","#5227FF"]}
+        colorStops={["#7cff67", "#B19EEF", "#5227FF"]}
         blend={0.5}
         amplitude={1.0}
         speed={1}
@@ -200,58 +176,23 @@ export default function Pages() {
             </div>
           </section>
 
-          {/* ── FOOTER (section 5) ── */}
+          {/* ── FAQ Section ── */}
+          <section data-scroll-section>
+            <FAQSection />
+          </section>
+
+          {/* ── Connect Section ── */}
+          <section data-scroll-section>
+            <ConnectSection />
+          </section>
+
+          {/* ── Footer Section ── */}
           <section
             id="sectionFooter"
-            className={styles.footerSection}
+            className={styles.simpleFooter}
             data-scroll-section
           >
-            <div className={footerStyles.bigcontainer}>
-              <div className={footerStyles.container}>
-                <div className={footerStyles.wrapper}>
-                  <header className={footerStyles.header}>
-                    <div className={footerStyles.logoContainer}>
-                      <div className={footerStyles.mainhead}>
-                        <div className={footerStyles.title}>Association for</div>
-                        <div className={footerStyles.title}>Computing Machinery</div>
-                        <div className={footerStyles.subtitle}>NMAMIT Student Chapter</div>
-                      </div>
-                    </div>
-                  </header>
-                  <div className={footerStyles.mainGrid}>
-                    <div className={footerStyles.aboutSection}>
-                      <h2 className={footerStyles.sectionTitle}>Find Us</h2>
-                      <iframe
-                        title="Google Maps Location"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3884.6730533394875!2d74.93141407508013!3d13.18300258715209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbb56415ad85e5b%3A0x10b77ac6f6afc7fa!2sN.M.A.M.%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1733416769802!5m2!1sen!2sin"
-                        allowFullScreen
-                        loading="lazy"
-                        referrerPolicy="no-referrer-when-downgrade"
-                        className={footerStyles.mapSectionIframe}
-                      />
-                    </div>
-                    <div className={footerStyles.contactSection}>
-                      <h2 className={footerStyles.sectionTitle}>Contact Us</h2>
-                      <div className={footerStyles.contactInfo}>
-                        <div>acmnmamit24@gmail.com</div>
-                      </div>
-                      <h2 className={footerStyles.sectionTitle} style={{ marginTop: '2rem' }}>Connect</h2>
-                      <div className={footerStyles.socialLinks}>
-                        {socialLinks.map((s) => (
-                          <a key={s.name} href={s.url} className={footerStyles.socialLink}
-                            aria-label={s.name} target="_blank" rel="noreferrer">
-                            <FontAwesomeIcon icon={s.icon} className={footerStyles.socialIcon} />
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={footerStyles.footerBottom}>
-                © 2025 NMAMIT ACM Student Chapter. All rights reserved.
-              </div>
-            </div>
+            <p>© Association for Computing Machinery, 2025. All rights reserved.</p>
           </section>
 
         </div>

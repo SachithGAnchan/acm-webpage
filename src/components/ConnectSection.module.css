@@ -1,0 +1,226 @@
+.connectWrapper {
+  padding: 4rem 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Contact Tile (Green Box) */
+.contactTile {
+  flex: 2;
+  background: #39FF14; /* Neon green */
+  border-radius: 32px;
+  padding: 4rem;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1;
+}
+
+.subtitle {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.5rem 0 3rem 0;
+  opacity: 0.8;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.row {
+  display: flex;
+  gap: 2rem;
+}
+
+.inputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+  padding: 0.75rem 0;
+  font-size: 1.1rem;
+  outline: none;
+  color: #000;
+  transition: border-color 0.3s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+  border-bottom-color: rgba(0, 0, 0, 0.8);
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.submitBtn {
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.submitBtn:hover {
+  transform: scale(1.05);
+}
+
+.submitIcon {
+  background: #fff;
+  color: #000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  max-width: 250px;
+  line-height: 1.4;
+}
+
+/* Social Tiles (Dark Boxes) */
+.socialTiles {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.socialTile {
+  flex: 1;
+  background: #0f1115;
+  border-radius: 32px;
+  padding: 2.5rem;
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease;
+}
+
+.socialTile:hover {
+  border-color: #39FF14;
+}
+
+.socialTile.linkedin:hover {
+  background: #0077b5;
+  border-color: #fff;
+}
+
+.socialTile.instagram:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  border-color: #fff;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.joinAction {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+.arrowIcon {
+  background: #fff;
+  color: #000;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.successMessage {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .contactTile {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .formFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+}

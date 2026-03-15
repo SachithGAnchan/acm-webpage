@@ -13,55 +13,35 @@ import MembersChoicePage from './components/Members/MembersChoicePage';
 import Events from './components/Event/Events';
 import EventChoicePage from './components/Event/EventChoicePage';
 import TerminalAnimation from './TerminalAnimation';
-const TRACKING_ID = process.env.REACT_APP_TRACKING_ID;
+import PageTransition from './components/PageTransition';
+import Sidebar from './components/Sidebar';
 
+const TRACKING_ID = process.env.REACT_APP_TRACKING_ID;
 ReactGA.initialize(TRACKING_ID);
 
+const Layout = ({ children }) => (
+  <>
+    <Sidebar />
+    <AnalyticsWrapper />
+    <PageTransition>{children}</PageTransition>
+  </>
+);
+
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Pages />,
-  },
-  {
-    path: "/members",
-    element: <MembersChoicePage />,
-  },
-  {
-    path: "/members/2025",
-    element: <Members year="2025" />,
-  },
-  {
-    path: "/members/2024",
-    element: <Members year="2024" />,
-  },
-  {
-    path: "/events",
-    element: <EventChoicePage />,
-  },
-  {
-    path: "/events/2025",
-    element: <Events year="2025" />,
-  },
-  {
-    path: "/events/2024",
-    element: <Events year="2024" />,
-  },
-  {
-    path: "/magic",
-    element: <TerminalAnimation />
-  },
-
-
-
+  { path: "/", element: <Layout><Pages /></Layout> },
+  { path: "/members", element: <Layout><MembersChoicePage /></Layout> },
+  { path: "/members/2025", element: <Layout><Members year="2025" /></Layout> },
+  { path: "/members/2024", element: <Layout><Members year="2024" /></Layout> },
+  { path: "/events", element: <Layout><EventChoicePage /></Layout> },
+  { path: "/events/2025", element: <Layout><Events year="2025" /></Layout> },
+  { path: "/events/2024", element: <Layout><Events year="2024" /></Layout> },
+  { path: "/magic", element: <Layout><TerminalAnimation /></Layout> },
 ]);
 
 function App() {
   return (
     <div className="App">
-      {/* RouterProvider wraps AnalyticsWrapper */}
-      <RouterProvider router={router}>
-        <AnalyticsWrapper />
-      </RouterProvider>
+      <RouterProvider router={router} />
     </div>
   );
 }
@@ -75,7 +55,7 @@ function AnalyticsWrapper() {
     ReactGA.pageview(location.pathname + location.search);
   }, [location, navigationType]);
 
-  return null; // No need to render anything
+  return null;
 }
 
 export default App;
