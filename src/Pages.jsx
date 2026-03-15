@@ -9,13 +9,9 @@ import { useScramble } from 'use-scramble';
 import Footer from './components/Footer/Footer';
 import Events from './components/Event/Events';
 import ProfileCard from './ProfileCard';
-import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
-import HexagonParticles from '../src/HexagonParticles';
 import styless from './ProfileCard.module.css';
 import Aboutus from './components/Aboutus';
-import VantaGlobe from './VantaGlobe';
 import VantaRings from './VantaRings';
 //all profiles 
 
@@ -82,19 +78,6 @@ export default function Pages() {
   const scrollInstanceRef = useRef(null);
 
 
-  const { ref: scrambleRef1, replay: scrambleReplay1 } = useScramble({
-    text: "Association for",
-    speed: 0.5,
-  });
-  const { ref: scrambleRef2, replay: scrambleReplay2 } = useScramble({
-    text: "Computing Machinery",
-    speed: 0.3,
-  });
-  const { ref: scrambleRef3, replay: scrambleReplay3 } = useScramble({
-    text: "@NMAMIT",
-    speed: 0.4,
-  });
-
   // this would be for upcomig events 
   const { ref: scrambleRef4, replay: scrambleReplay4 } = useScramble({
     text: "EVENTS",
@@ -104,13 +87,6 @@ export default function Pages() {
     text: "Our Team (2024–25)",
     speed: 0.4,
   });
-
-  const { ref: scrambleRef6, replay: scrambleReplay6 } = useScramble({
-    text: "About",
-    speed: 0.6,
-  });
-
-
 
 
   // GSAP Animation
@@ -166,19 +142,8 @@ export default function Pages() {
     }
   };
 
-  const handleMouseEnter1 = () => scrambleReplay1();
-  const handleMouseEnter2 = () => scrambleReplay2();
-  const handleMouseEnter3 = () => scrambleReplay3();
-
-
-  //for events 
   const handleMouseEnter4 = () => scrambleReplay4();
   const handleMouseEnter5 = () => scrambleReplay5();
-  const handleMouseEnter6 = () => scrambleReplay6();
-
-const SCROLL_KEY = "pages-scroll-position";
-
-
   return (
     <>
 

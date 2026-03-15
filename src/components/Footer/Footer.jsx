@@ -77,6 +77,7 @@ const Footer = () => {
               <div className={styles.aboutSection}>
                 <h2 className={styles.sectionTitle}>Find Us</h2>
                 <iframe
+                  title="Google Maps Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3884.6730533394875!2d74.93141407508013!3d13.18300258715209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbb56415ad85e5b%3A0x10b77ac6f6afc7fa!2sN.M.A.M.%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1733416769802!5m2!1sen!2sin"
                   allowFullScreen
                   loading="lazy"
@@ -101,6 +102,7 @@ const Footer = () => {
                       className={styles.socialLink}
                       aria-label={social.name}
                       target="_blank" 
+                      rel="noreferrer"
                     >
                       <FontAwesomeIcon icon={social.icon} className={styles.socialIcon} />
                     </a>
