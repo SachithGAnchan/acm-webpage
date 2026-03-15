@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LocomotiveScroll from 'locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -12,7 +12,9 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { Home, Calendar, Users, Terminal } from 'lucide-react';
 import styles from './Pages.module.css';
 import footerStyles from './components/Footer/Footer.module.css';
-import Aurora from './Aurora';
+import Lightning from './components/ui/Lightning';
+import RegisterModal from './components/ui/RegisterModal';
+
 
 // ─── Sidebar ────────────────────────────────────────────────────────────────
 function Sidebar() {
@@ -46,6 +48,8 @@ export default function Pages() {
   const scrollRef = useRef(null);
   const scrollInst = useRef(null);
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [showModal, setShowModal] = useState(false);
+
 
   // ── Locomotive Scroll ──
   useEffect(() => {
@@ -91,12 +95,6 @@ export default function Pages() {
       {/* ── Sidebar ── */}
       <Sidebar />
 
-      <Aurora
-        colorStops={["#7cff67","#B19EEF","#5227FF"]}
-        blend={0.5}
-        amplitude={1.0}
-        speed={1}
-      />
 
       <div className={styles.big}>
         <div className={styles.pagesContainer} ref={scrollRef} data-scroll-container>
@@ -110,8 +108,7 @@ export default function Pages() {
               </div>
 
               <ul className={styles.desktopMenu}>
-                <li className={styles.pillItem}>Add</li>
-                <li className={styles.pillItem}>Login</li>
+                <li className={styles.pillItem} onClick={() => setShowModal(true)} style={{cursor:"pointer"}}>Login</li>
               </ul>
 
               <button className={styles.menuToggle} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
@@ -122,8 +119,7 @@ export default function Pages() {
             {/* Mobile slide menu */}
             <div className={`${styles.mobileMenu} ${menuOpen ? styles.open : ''}`}>
               <ul className={styles.mobileMenuList}>
-                <li>Add</li>
-                <li>Login</li>
+                <li onClick={() => setShowModal(true)}>Login</li>
               </ul>
             </div>
           </nav>
@@ -136,7 +132,7 @@ export default function Pages() {
             className={`${styles.pageSection} ${styles.section1}`}
             data-scroll-section
           >
-            <div className={styles.heroVanta}>
+            <div className={styles.heroVanta}><div style={{position:"absolute",top:0,left:0,width:"100%",height:"100%",zIndex:0}}><Lightning hue={260} xOffset={0} speed={1} intensity={1} size={1} /></div>
               <div className={styles.heroText}>
                 <h1 className={styles.heroTitle}>
                   Association for<br />
@@ -256,6 +252,7 @@ export default function Pages() {
 
         </div>
       </div>
+      {showModal && <RegisterModal onClose={() => setShowModal(false)} />}
     </>
   );
 }

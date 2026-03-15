@@ -1,38 +1,15 @@
-import React, { useEffect, useRef } from "react";
-import * as THREE from "three";
-import NET from "vanta/dist/vanta.net.min";
+import React from "react";
+import Lightning from "./components/ui/Lightning";
 import styles from "./VantaRings.module.css";
-
 const VantaRings = () => {
-  const vantaRef = useRef(null);
-
-  useEffect(() => {
-    let vantaEffect;
-    if (!vantaRef.current) return;
-
-    vantaEffect = NET({
-      el: vantaRef.current,
-      THREE,
-      color: 0xaa44ff,          // purple nodes/lines
-      backgroundColor: 0x3d0070, // deep violet background
-      points: 9.0,
-      maxDistance: 22.0,
-      spacing: 18.0,
-      showDots: true,
-    });
-
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, []);
-
   return (
-    <div ref={vantaRef} style={{ height: "100vh", width: "100%", position: "relative" }}>
+    <div style={{ position:"relative", height:"100vh", width:"100%", backgroundColor:"#000", overflow:"hidden" }}>
+      <div style={{ position:"absolute", top:0, left:0, width:"100%", height:"100%" }}>
+        <Lightning hue={260} xOffset={0} speed={1} intensity={1} size={1} />
+      </div>
       <div className={styles.titleContainer}>
         <h1 className={styles.mainTitle}>
-          Association for<br />
-          Computing<br />
-          Machinery
+          Association for<br />Computing<br />Machinery
         </h1>
         <p className={styles.description}>
           NMAMIT's premier computing community.<br />
@@ -42,5 +19,4 @@ const VantaRings = () => {
     </div>
   );
 };
-
 export default VantaRings;
